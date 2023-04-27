@@ -1,4 +1,4 @@
-import pkg from '@angular/compiler';
+import pkg from '@angular/core';
 const CUSTOM_ELEMENTS_SCHEMA = pkg.CUSTOM_ELEMENTS_SCHEMA;
 const NO_ERRORS_SCHEMA = pkg.NO_ERRORS_SCHEMA;
 
