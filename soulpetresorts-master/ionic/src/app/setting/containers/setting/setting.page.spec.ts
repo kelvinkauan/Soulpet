@@ -1,5 +1,6 @@
-import compiler from '@angular/compiler';
-const { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } = compiler;
+import pkg from '@angular/compiler';
+const { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } = pkg;
+
 
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
