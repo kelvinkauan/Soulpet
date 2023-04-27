@@ -1,4 +1,4 @@
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/compiler';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {SettingPage} from './setting.page';
