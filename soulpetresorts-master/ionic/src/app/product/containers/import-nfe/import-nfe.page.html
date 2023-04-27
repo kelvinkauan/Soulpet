@@ -1,0 +1,456 @@
+<app-header [title]="'Importação de NFe'" [showButtonBack]="true"></app-header>
+
+<ion-content class="sp-import-nfe-content">
+  <ion-grid>
+    <ion-row>
+      <ion-col class="left">
+        <ion-button color="success" shape="round" mode="ios">Upload</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ngx-datatable
+          [rows]="rows"
+          [ngClass]="'material'"
+          [rowHeight]="'auto'"
+          [headerHeight]="50"
+          [columnMode]="'force'"
+          [messages]="{emptyMessage:'Nenhum resultado encontrado.'}"
+        >
+          <ngx-datatable-column name="Nota Fiscal">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-row class="title">
+                Modelo
+              </ion-row>
+              <ion-row class="info">
+                {{ row.modelo }}
+              </ion-row>
+              <ion-row class="title spacing">
+                Chave de acesso
+              </ion-row>
+              <ion-row class="info">
+                {{ row.chave }}
+              </ion-row>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-row class="title">
+                Serie
+              </ion-row>
+              <ion-row class="info">
+                {{ row.serie }}
+              </ion-row>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-row class="title">
+                Número
+              </ion-row>
+              <ion-row class="info">
+                {{ row.numero }}
+              </ion-row>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-row class="title">
+                Emissão
+              </ion-row>
+              <ion-row class="info">
+                {{ row.emissao }}
+              </ion-row>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-row class="title">
+                Valor total dos produtos
+              </ion-row>
+              <ion-row class="right info">
+                R$ {{ row.totalProdutos }}
+              </ion-row>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-row class="title">
+                Valor total N.F
+              </ion-row>
+              <ion-row class="info">
+                R$ {{ row.totalNfe }}
+              </ion-row>
+              <ion-row class="spacing">
+                <ion-button color="primary" shape="round" mode="ios"
+                  >Baixar arquivo</ion-button
+                >
+              </ion-row>
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ngx-datatable
+          [rows]="rowsFornecedor"
+          [ngClass]="'material'"
+          [rowHeight]="'auto'"
+          [headerHeight]="50"
+          [columnMode]="'force'"
+          [messages]="{emptyMessage:'Nenhum resultado encontrado.'}"
+        >
+          <ngx-datatable-column name="Fornecedor">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-row class="title">
+                CNPJ
+              </ion-row>
+              <ion-row class="info">
+                {{ row.cnpj }}
+              </ion-row>
+              <ion-row class="title spacing">
+                Endereço
+              </ion-row>
+              <ion-row class="info">
+                {{ row.endereco }}
+              </ion-row>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-row class="title">
+                Razão social
+              </ion-row>
+              <ion-row class="info">
+                {{ row.razaoSocial }}
+              </ion-row>
+              <ion-row class="title spacing">
+                Bairro
+              </ion-row>
+              <ion-row class="info">
+                {{ row.bairro }}
+              </ion-row>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-row class="title">
+                Nome Fantasia
+              </ion-row>
+              <ion-row class="info">
+                {{ row.nomeFantasia }}
+              </ion-row>
+              <ion-row>
+                <ion-col size="6">
+                  <ion-row class="title spacing">
+                    Cep
+                  </ion-row>
+                  <ion-row class="info">
+                    {{ row.cep }}
+                  </ion-row>
+                </ion-col>
+                <ion-col size="6">
+                  <ion-row class="title spacing">
+                    Município
+                  </ion-row>
+                  <ion-row class="info">
+                    {{ row.municipio }}
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-row class="title">
+                I.E.
+              </ion-row>
+              <ion-row class="info">
+                {{ row.ie }}
+              </ion-row>
+              <ion-row class="title spacing">
+                UF
+              </ion-row>
+              <ion-row class="info">
+                {{ row.uf }}
+              </ion-row>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-row>
+                <ion-icon src="assets/icon/check.svg" class="icon"></ion-icon>
+              </ion-row>
+              <ion-row class="update">
+                <p>Atualizar fornecedor</p>
+              </ion-row>
+              <ion-row>
+                <ion-item class="border">
+                  <ion-input placeholder="Sim" type="text"></ion-input>
+                </ion-item>
+              </ion-row>
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <h3>Produtos</h3>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ngx-datatable
+          [rows]="products"
+          [ngClass]="'material'"
+          [rowHeight]="'auto'"
+          [headerHeight]="50"
+          [columnMode]="'force'"
+          [scrollbarH]="true"
+          [messages]="{emptyMessage:'Nenhum resultado encontrado.'}"
+        >
+          <ngx-datatable-column name="Nr.">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              {{ row.nr }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Produto">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              {{ row.produto }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="EAN">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              {{ row.ean}}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Cód. fom.">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              {{ row.cod }}
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="Unid.">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              {{ row.unid }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="VL. unit.">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              {{ row.vlUnit }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Qtde.">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              {{ row.qtde }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Total">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              {{ row.total }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <div class="status">
+                Identificado
+            </div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Produto associado">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-item class="dropdown">
+                <ion-label class="sp-label" position="floating"></ion-label>
+                <ion-select placeholder="Selecione"
+                            okText="OK"
+                            cancelText="Cancelar"
+                            formControlName="country">
+                    <ion-select-option [value]="1">Produto</ion-select-option>
+                    <ion-select-option [value]="2">Produto</ion-select-option>
+                </ion-select>
+            </ion-item>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Unid. comercialização">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-item class="dropdown">
+                <ion-label class="sp-label" position="floating"></ion-label>
+                <ion-select placeholder="Selecione"
+                            okText="OK"
+                            cancelText="Cancelar"
+                            formControlName="country">
+                    <ion-select-option [value]="1">Produto</ion-select-option>
+                    <ion-select-option [value]="2">Produto</ion-select-option>
+                </ion-select>
+            </ion-item>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Qt. entr. estoq.">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-item class="dropdown">
+                <ion-input placeholder="2" type="text"></ion-input>
+              </ion-item>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Preço custo">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-item class="dropdown">
+                <ion-input placeholder="2" type="text"></ion-input>
+              </ion-item>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Mrg.(%) lucro">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-item class="dropdown">
+                <ion-input placeholder="2" type="text"></ion-input>
+              </ion-item>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Preço venda">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-item class="dropdown">
+                <ion-input placeholder="2" type="text"></ion-input>
+              </ion-item>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Classificação">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-item class="dropdown">
+                <ion-label class="sp-label" position="floating"></ion-label>
+                <ion-select placeholder="Selecione"
+                            okText="OK"
+                            cancelText="Cancelar"
+                            formControlName="country">
+                    <ion-select-option [value]="1">Produto</ion-select-option>
+                    <ion-select-option [value]="2">Produto</ion-select-option>
+                </ion-select>
+            </ion-item>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Fabricante">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-item class="dropdown">
+                <ion-label class="sp-label" position="floating"></ion-label>
+                <ion-select placeholder="Selecione"
+                            okText="OK"
+                            cancelText="Cancelar"
+                            formControlName="country">
+                    <ion-select-option [value]="1">Produto</ion-select-option>
+                    <ion-select-option [value]="2">Produto</ion-select-option>
+                </ion-select>
+            </ion-item>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="" sortable="false">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-icon src="assets/icon/list-ul.svg" class="icon"></ion-icon>
+              <ion-icon src="assets/icon/dollar-sign.svg" class="icon"></ion-icon>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="NCM">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              {{ row.ncm }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="CFOP">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              {{ row.cfop }}
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ngx-datatable
+          [rows]="rows"
+          [ngClass]="'material'"
+          [rowHeight]="'auto'"
+          [headerHeight]="50"
+          [columnMode]="'force'"
+          [messages]="{emptyMessage:'Nenhum resultado encontrado.'}"
+        >
+          <ngx-datatable-column name="Pagamentos">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                <ion-row>
+                  <ion-col size="6">
+                    <ion-item class="border">
+                      <ion-select
+                        placeholder="Unidade"
+                        okText="OK"
+                        cancelText="Cancelar"
+                      >
+                        <ion-select-option [value]="1"
+                          >Unidade 1
+                        </ion-select-option>
+                      </ion-select>
+                    </ion-item>
+                  </ion-col>
+  
+                  <ion-col size="6">
+                    <ion-item class="border">
+                      <ion-select
+                        placeholder="Unidade"
+                        okText="OK"
+                        cancelText="Cancelar"
+                      >
+                        <ion-select-option [value]="1"
+                          >Unidade 1
+                        </ion-select-option>
+                      </ion-select>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+              </ng-template>
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <ion-row>
+                <ion-col size="12">
+                  <!-- <ngx-datatable
+                    [rows]="rows"
+                    [ngClass]="'material'"
+                    [rowHeight]="'auto'"
+                    [headerHeight]="50"
+                    [columnMode]="'force'"
+                    [messages]="{emptyMessage:'Nenhum resultado encontrado.'}"
+                  >
+                    <ngx-datatable-column name="Data Pgto." class="tabela">
+                      <ng-template let-row="row" ngx-datatable-cell-template>
+                        i
+                      </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Documento">
+                      <ng-template let-row="row" ngx-datatable-cell-template>
+                      </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Valor">
+                      <ng-template let-row="row" ngx-datatable-cell-template>
+                      </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Info adic.">
+                      <ng-template let-row="row" ngx-datatable-cell-template>
+                      </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column name="" sortable="false">
+                      <ng-template let-row="row" ngx-datatable-cell-template>
+                        <ion-button color="light" mode="ios">
+                          <ion-icon src="assets/icon/delete.svg"></ion-icon>
+                        </ion-button>
+                      </ng-template>
+                    </ngx-datatable-column>
+                  </ngx-datatable> -->
+                </ion-col>
+              </ion-row>
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

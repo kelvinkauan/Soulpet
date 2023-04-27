@@ -1,0 +1,58 @@
+<app-header-modal [title]="'Receber'"></app-header-modal>
+
+<ion-content class="sp-category-content">
+    <ion-grid class="sp-form" [formGroup]="formGroup">
+        <ion-row>
+            <ion-col>
+                <ion-item>
+                    <ion-label class="sp-label" position="floating">Valor</ion-label>
+                    <ion-input type="text"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="8">
+                <ion-item>
+                    <ion-label class="sp-label" position="floating">Forma de pagamento</ion-label>
+                    <ion-input type="text"></ion-input>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+                <ion-item>
+                    <ion-label class="sp-label" position="floating">Parcelas</ion-label>
+                    <ion-input type="text"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="6">
+                <ion-item>
+                    <ion-label class="sp-label" position="floating">Selecione a bandeira</ion-label>
+                    <ion-input type="text"></ion-input>
+                </ion-item>
+            </ion-col>
+            <ion-col size="6">
+                <ion-item>
+                    <ion-label class="sp-label" position="floating">N° do comprovante</ion-label>
+                    <ion-input type="text"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="6">
+                <ion-item>
+                    <ion-label class="sp-label" position="floating">CPF na nota:</ion-label>
+                    <ion-input type="text"></ion-input>
+                </ion-item>
+            </ion-col>
+            <ion-col size="6">
+                <ion-item>
+                    <ion-label class="sp-label" position="floating">Número</ion-label>
+                    <ion-input type="text"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
+<app-footer-modal (clickCancel)="onClickCancel()" (clickConfirm)="onClickConfirm()" [labelConfirm]="'Receber'"></app-footer-modal>

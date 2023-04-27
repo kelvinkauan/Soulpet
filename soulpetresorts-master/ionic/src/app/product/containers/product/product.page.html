@@ -1,0 +1,67 @@
+<app-header [title]="'Lista de Produtos'" [headerActions]="true" [descriptionSearch]="'Nome do Produto'"></app-header>
+
+<ion-content class="sp-product-content">
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-button color="success" shape="round" mode="ios" (click)="presentModal()">Cadastrar Produto</ion-button>
+            </ion-col>
+            <ion-col class="right">
+                <ion-button color="success" shape="round" mode="ios" (click)="openImportModal()">Importação de NFe</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ngx-datatable [rows]="productsCollection$ | async"
+                               [ngClass]="'material'"
+                               [rowHeight]="'auto'"
+                               [headerHeight]="50"
+                               [columnMode]="'force'"
+                               [messages]="{emptyMessage:'Nenhum resultado encontrado.'}"
+                               [loadingIndicator]="isLoading$ | async">
+                    <ngx-datatable-column name="Foto">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            <ion-img src="{{ row.image }}" *ngIf="row.image !== 'null'" class="image"></ion-img>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Nome">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{ row.description }}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Categoria">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{ CATEGORY[row.category] }}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Valor">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{ row.price_sale | currency: 'BRL':'symbol' }}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Estoque">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            1
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Opções" sortable="false">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            <ion-button color="light" mode="ios" (click)="presentViewModal(row)">
+                                <ion-icon src="assets/icon/eye.svg"></ion-icon>
+                            </ion-button>
+                            <ion-button color="light" mode="ios" (click)="selectProduct(row)">
+                                <ion-icon src="assets/icon/edit.svg"></ion-icon>
+                            </ion-button>
+                            <ion-button color="light" mode="ios" (click)="confirmProduct(row)">
+                                <ion-icon src="assets/icon/delete.svg"></ion-icon>
+                            </ion-button>
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

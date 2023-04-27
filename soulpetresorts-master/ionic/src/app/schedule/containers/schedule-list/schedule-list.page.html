@@ -1,0 +1,59 @@
+<app-header [title]="'Conferência da Agenda'" [showButtonBack]="true"></app-header>
+<app-schedule-filter-list></app-schedule-filter-list>
+
+<ion-content class="sp-schedule-list-content">
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ngx-datatable [rows]="schedulesCollection$ | async"
+                               [ngClass]="'material'"
+                               [rowHeight]="'auto'"
+                               [headerHeight]="50"
+                               [columnMode]="'force'"
+                               [messages]="{emptyMessage:'Nenhum resultado encontrado.'}"
+                               [loadingIndicator]="isLoading$ | async">
+                    <ngx-datatable-column name="Hora">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{ row.startTime | date: 'H:mm' }}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Pronto">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{ row.endTime | date: 'H:mm' }}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Pet">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{ row.pet.name }}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Responsável">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            Adriano Ruiz
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Serviço">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{ row.service.description }}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Observação">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            Observação
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Opções" sortable="false">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            <ion-button color="light" mode="ios">
+                                <ion-icon src="assets/icon/edit.svg"></ion-icon>
+                            </ion-button>
+                            <ion-button color="light" mode="ios">
+                                <ion-icon src="assets/icon/delete.svg"></ion-icon>
+                            </ion-button>
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

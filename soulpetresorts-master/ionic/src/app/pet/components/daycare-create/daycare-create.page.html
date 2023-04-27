@@ -1,0 +1,81 @@
+<app-header-modal [title]="'Agendar ' + service.description + ' para o ' + form?.name"></app-header-modal>
+
+<ion-content class="sp-service-content">
+    <ion-grid class="sp-form" [formGroup]="formGroup">
+        <ion-row>
+            <ion-col>
+                <ion-item>
+                    <ion-label class="sp-label" position="floating">Diária <span class="required">*</span></ion-label>
+                    <ion-select placeholder="Selecione"
+                                okText="OK"
+                                cancelText="Cancelar"
+                                formControlName="daily">
+                        <ion-select-option [value]="'1'">Inteira</ion-select-option>
+                        <ion-select-option [value]="'2'">Meia</ion-select-option>
+                    </ion-select>
+                </ion-item>
+                <ng-container *ngFor="let validation of validationMessages.daily">
+                    <app-validation-message [form]="formGroup" [control]="'daily'" [validation]="validation"></app-validation-message>
+                </ng-container>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-item>
+                    <ion-label class="sp-label" position="floating">Check-in <span class="required">*</span></ion-label>
+                    <ion-datetime formControlName="date_checkin"
+                                  displayFormat="DD/MM/YYYY"
+                                  doneText="OK"
+                                  cancelText="Cancelar"></ion-datetime>
+                </ion-item>
+                <ng-container *ngFor="let validation of validationMessages.date_checkin">
+                    <app-validation-message [form]="formGroup" [control]="'date_checkin'" [validation]="validation"></app-validation-message>
+                </ng-container>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-item>
+                    <ion-label class="sp-label" position="floating">Horário Entrada <span class="required">*</span></ion-label>
+                    <ion-datetime formControlName="hour_checkin"
+                                  displayFormat="HH:mm"
+                                  doneText="OK"
+                                  cancelText="Cancelar"></ion-datetime>
+                </ion-item>
+                <ng-container *ngFor="let validation of validationMessages.hour_checkin">
+                    <app-validation-message [form]="formGroup" [control]="'hour_checkin'" [validation]="validation"></app-validation-message>
+                </ng-container>
+            </ion-col>
+            <ion-col>
+                <ion-item>
+                    <ion-label class="sp-label" position="floating">Horário Saída <span class="required">*</span></ion-label>
+                    <ion-datetime formControlName="hour_checkout"
+                                  displayFormat="HH:mm"
+                                  doneText="OK"
+                                  cancelText="Cancelar"></ion-datetime>
+                </ion-item>
+                <ng-container *ngFor="let validation of validationMessages.hour_checkout">
+                    <app-validation-message [form]="formGroup" [control]="'hour_checkout'" [validation]="validation"></app-validation-message>
+                </ng-container>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-item>
+                    <ion-label class="sp-label" position="floating">Selecionar Turma Personalizada</ion-label>
+                    <ion-select placeholder="Selecione"
+                                okText="OK"
+                                cancelText="Cancelar"
+                                formControlName="custom">
+                        <ion-select-option [value]="'1'">Adestrameto</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
+<app-footer-modal (clickCancel)="onClickCancel()"
+                  (clickConfirm)="onClickConfirm()"
+                  [labelConfirm]="'Concluir'"
+                  [isLoading]="isLoading$ | async"></app-footer-modal>

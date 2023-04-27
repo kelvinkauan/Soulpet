@@ -1,0 +1,12 @@
+<app-header [title]="'Calendário'" [isCart]="true" [order]="orderSelected$ | async"></app-header>
+
+<app-schedule-filter [currentDate]="currentDate"
+                     (backDate)="backDate()"
+                     (forwardDate)="forwardDate()"
+                     (clickView)="openScheduleList()"></app-schedule-filter>
+
+<ion-content class="sp-schedule-content">
+    <app-schedule-calendar [currentDate]="currentDate"
+                           [schedule]="schedulesCollection$ | async"
+                           (changeDate)="changeDate($event)"></app-schedule-calendar>
+</ion-content>

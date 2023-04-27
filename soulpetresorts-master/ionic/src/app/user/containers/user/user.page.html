@@ -1,0 +1,117 @@
+<app-header [title]="'Lista de Usuários'" [headerActions]="true"></app-header>
+<app-user-tabs [selected]="tab" (tab)="onTab($event)"></app-user-tabs>
+
+<ion-content class="sp-user-content">
+    <div class="sp-user-user" *ngIf="tab === 'user'">
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ion-button color="success" shape="round" mode="ios" (click)="presentModal()">Cadastrar Usuário
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ngx-datatable [rows]="usersCollection$ | async"
+                                   [ngClass]="'material'"
+                                   [rowHeight]="'auto'"
+                                   [headerHeight]="50"
+                                   [columnMode]="'force'"
+                                   [messages]="{emptyMessage:'Nenhum resultado encontrado.'}"
+                                   [loadingIndicator]="isLoading$ | async">
+                        <ngx-datatable-column name="Foto">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <ion-avatar (click)="selectUser(row)">
+                                    <img src="{{ row.avatar }}">
+                                </ion-avatar>
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Nome">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <span (click)="selectUser(row)">{{ row.name }}</span>
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Loja">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <span (click)="selectUser(row)">{{ row.unity.fantasy }}</span>
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Cargo">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <span (click)="selectUser(row)">{{ (row.role === 'CLIENT') ? 'Cliente' : 'Administrativo' }}</span>
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Opções" sortable="false">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <ion-button color="light" mode="ios" (click)="selectUser(row)">
+                                    <ion-icon src="assets/icon/edit.svg"></ion-icon>
+                                </ion-button>
+                                <ion-button color="light" mode="ios" (click)="confirmUser(row)">
+                                    <ion-icon src="assets/icon/delete.svg"></ion-icon>
+                                </ion-button>
+                            </ng-template>
+                        </ngx-datatable-column>
+                    </ngx-datatable>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+    <div class="sp-user-user" *ngIf="tab === 'employee'">
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ion-button color="success" shape="round" mode="ios" (click)="presentModal()">Cadastrar Funcionário
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ngx-datatable [rows]="usersCollection$ | async"
+                                   [ngClass]="'material'"
+                                   [rowHeight]="'auto'"
+                                   [headerHeight]="50"
+                                   [columnMode]="'force'"
+                                   [messages]="{emptyMessage:'Nenhum resultado encontrado.'}"
+                                   [loadingIndicator]="isLoading$ | async">
+                        <ngx-datatable-column name="Foto">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <ion-avatar (click)="selectUser(row)">
+                                    <img src="{{ row.avatar }}">
+                                </ion-avatar>
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Nome">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <span (click)="selectUser(row)">{{ row.name }}</span>
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Loja">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <span (click)="selectUser(row)">{{ row.unity.fantasy }}</span>
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Cargo">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <span (click)="selectUser(row)">{{ (row.role === 'CLIENT') ? 'Cliente' : 'Administrativo' }}</span>
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Opções" sortable="false">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <ion-button color="light" mode="ios" (click)="selectUser(row)">
+                                    <ion-icon src="assets/icon/edit.svg"></ion-icon>
+                                </ion-button>
+                                <ion-button color="light" mode="ios" (click)="confirmUser(row)">
+                                    <ion-icon src="assets/icon/delete.svg"></ion-icon>
+                                </ion-button>
+                            </ng-template>
+                        </ngx-datatable-column>
+                    </ngx-datatable>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+</ion-content>

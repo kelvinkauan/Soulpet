@@ -1,0 +1,142 @@
+<app-header [title]="'Pet Sitter'" [showButtonBack]="true"></app-header>
+
+<ion-content class="sp-pet-sitter-content">
+    <ion-grid>
+        <ion-row>
+            <ion-col size="7">
+                <ion-item class="border">
+                    <ion-label class="sp-label" position="floating"
+                    >PetSitters
+                    </ion-label>
+                    <ion-select placeholder="Selecione a pet sitter"
+                                okText="OK"
+                                cancelText="Cancelar">
+                        <ion-select-option [value]="1">PetSitter 1</ion-select-option>
+                        <ion-select-option [value]="2">PetSitter 2</ion-select-option>
+                        <ion-select-option [value]="3">PetSitter 3</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row class="title">
+            <p>Táxi incluso?</p>
+        </ion-row>
+        <ion-row>
+            <ion-col size="2">
+                <ion-item lines="none" class="no-border">
+                    <ion-checkbox [value]="'green'"
+                                  color="success"
+                                  mode="ios"></ion-checkbox>
+                    <ion-label class="sp-label margin-left">Sim</ion-label>
+                </ion-item>
+            </ion-col>
+            <ion-col size="2">
+                <ion-item lines="none" class="no-border">
+                    <ion-checkbox [value]="'green'"
+                                  color="success"
+                                  mode="ios"></ion-checkbox>
+                    <ion-label class="sp-label margin-left">Não</ion-label>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="title">
+            <p>Para qual data?</p>
+        </ion-row>
+
+        <ion-row>
+            <ion-col size="4">
+                <ion-item class="border">
+                    <ion-label class="sp-label" position="floating">__/__/____</ion-label>
+                    <ion-datetime displayFormat="DD/MM/YYYY"
+                                  doneText="OK"
+                                  cancelText="Cancelar"></ion-datetime>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col size="4">
+                <ion-item class="border">
+                    <ion-label class="sp-label" position="floating">__/__/____</ion-label>
+                    <ion-datetime displayFormat="DD/MM/YYYY"
+                                  doneText="OK"
+                                  cancelText="Cancelar"></ion-datetime>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row id="add-date">
+            <a href="" color="primary">+ Adicionar datas</a>
+        </ion-row>
+
+        <ion-row class="title">
+            <p>Selecione o Tutor(a)</p>
+        </ion-row>
+
+        <ion-row>
+            <ion-col size="6">
+                <ion-item class="border">
+                    <ion-label class="sp-label" position="floating">Tutores</ion-label>
+                    <ion-select placeholder="Selecione o tutor(a)"
+                                okText="OK"
+                                cancelText="Cancelar">
+                        <ion-select-option [value]="1">
+                            <ion-row>
+                                <ion-col size="1">
+                                    <ion-img src="assets/images/avatar.jpg" class="avatar"></ion-img>
+                                </ion-col>
+                                <ion-col size="9">
+                                    <ion-row>
+                                        <ion-text class="desc">Amanda Ramos</ion-text>
+                                    </ion-row>
+                                    <ion-row>
+                                        <ion-text class="infoTutor">Rua Rodrigues Alves 1634 - Cascavel - PR</ion-text>
+                                    </ion-row>
+                                </ion-col>
+                            </ion-row>
+                        </ion-select-option>
+                        <ion-select-option [value]="2">Tutor 2</ion-select-option>
+                        <ion-select-option [value]="3">Tutor 3</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row class="title">
+            <p>Selecione o Pet:</p>
+        </ion-row>
+        <ion-row>
+            <ion-col size="2">
+                <ion-card class="sp-pet-card">
+                    <img src="assets/images/dog.png" class="image"/>
+                    <ion-card-header class="sp-header">
+                        <ion-card-title class="sp-title">Fred</ion-card-title>
+                    </ion-card-header>
+                </ion-card>
+            </ion-col>
+            <ion-col size="2">
+                <ion-card class="sp-pet-card">
+                    <img src="assets/images/dog.png" class="image"/>
+                    <ion-card-header class="sp-header">
+                        <ion-card-title class="sp-title">Marlon</ion-card-title>
+                    </ion-card-header>
+                </ion-card>
+            </ion-col>
+            <ion-col class="ion-flex">
+                <app-card-button style="margin-top: 50px;"></app-card-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
+<ion-footer no-border>
+    <ion-toolbar>
+        <ion-grid>
+            <ion-row>
+                <ion-col class="ion-align-items-end">
+                    <ion-button color="success" shape="round" mode="ios">Finalizar</ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-footer>

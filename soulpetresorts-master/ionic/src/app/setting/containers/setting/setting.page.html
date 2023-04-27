@@ -1,0 +1,209 @@
+<app-header [title]="'Configurações'"></app-header>
+
+<ion-content class="sp-setting-content" padding>
+    <ion-grid>
+        <ion-row>
+            <ion-col class="sp-setting-padding">
+                <h2 class="sp-setting-title">Configurações do Pet</h2>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="ion-padding">
+                <div class="sp-setting-header">
+                    <h2 class="sp-title">Comportamentos</h2>
+                    <ion-button color="success" mode="ios" shape="round" size="small" (click)="presentModalBehavior()">+ Novo</ion-button>
+                </div>
+                <ion-card class="sp-setting-card">
+                    <ion-list>
+                        <ion-item *ngFor="let behavior of behaviorsCollection$ | async">
+                            <ion-label class="sp-setting-card-label">{{ behavior.description }}</ion-label>
+                            <ion-icon slot="end" src="assets/icon/edit.svg" class="sp-setting-card-icon" (click)="selectBehavior(behavior)"></ion-icon>
+                            <ion-icon slot="end" src="assets/icon/delete.svg" class="sp-setting-card-icon" (click)="confirmDelete(behavior, 'behavior')"></ion-icon>
+                        </ion-item>
+                    </ion-list>
+                </ion-card>
+            </ion-col>
+            <ion-col class="ion-padding">
+                <div class="sp-setting-header">
+                    <h2 class="sp-title">Raças</h2>
+                    <ion-button color="success" mode="ios" shape="round" size="small" (click)="presentModalBreed()">+ Nova</ion-button>
+                </div>
+                <ion-card class="sp-setting-card">
+                    <ion-list>
+                        <ion-item *ngFor="let breed of breedsCollection$ | async">
+                            <ion-label class="sp-setting-card-label">{{ breed.description }}</ion-label>
+                            <ion-icon slot="end" src="assets/icon/edit.svg" class="sp-setting-card-icon" (click)="selectBreed(breed)"></ion-icon>
+                            <ion-icon slot="end" src="assets/icon/delete.svg" class="sp-setting-card-icon" (click)="confirmDelete(breed, 'breed')"></ion-icon>
+                        </ion-item>
+                    </ion-list>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="ion-padding">
+                <div class="sp-setting-header">
+                    <h2 class="sp-title">Portes</h2>
+                    <ion-button color="success" mode="ios" shape="round" size="small" (click)="presentModalSize()">+ Novo</ion-button>
+                </div>
+                <ion-card class="sp-setting-card">
+                    <ion-list>
+                        <ion-item *ngFor="let size of sizesCollection$ | async">
+                            <ion-label class="sp-setting-card-label">{{ size.description }}</ion-label>
+                            <ion-icon slot="end" src="assets/icon/edit.svg" class="sp-setting-card-icon" (click)="selectSize(size)"></ion-icon>
+                            <ion-icon slot="end" src="assets/icon/delete.svg" class="sp-setting-card-icon" (click)="confirmDelete(size, 'size')"></ion-icon>
+                        </ion-item>
+                    </ion-list>
+                </ion-card>
+            </ion-col>
+            <ion-col class="ion-padding">
+                <div class="sp-setting-header">
+                    <h2 class="sp-title">Tipos de Pelo</h2>
+                    <ion-button color="success" mode="ios" shape="round" size="small" (click)="presentModalTypeFur()">+ Novo</ion-button>
+                </div>
+                <ion-card class="sp-setting-card">
+                    <ion-list>
+                        <ion-item *ngFor="let typeFur of typeFursCollection$ | async">
+                            <ion-label class="sp-setting-card-label">{{ typeFur.description }}</ion-label>
+                            <ion-icon slot="end" src="assets/icon/edit.svg" class="sp-setting-card-icon" (click)="selectTypeFur(typeFur)"></ion-icon>
+                            <ion-icon slot="end" src="assets/icon/delete.svg" class="sp-setting-card-icon" (click)="confirmDelete(typeFur, 'typeFur')"></ion-icon>
+                        </ion-item>
+                    </ion-list>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="ion-padding">
+                <div class="sp-setting-header">
+                    <h2 class="sp-title">Tipos de Pet</h2>
+                    <ion-button color="success" mode="ios" shape="round" size="small" (click)="presentModalType()">+ Novo</ion-button>
+                </div>
+                <ion-card class="sp-setting-card">
+                    <ion-list>
+                        <ion-item *ngFor="let type of typesCollection$ | async">
+                            <ion-label class="sp-setting-card-label">{{ type.description }}</ion-label>
+                            <ion-icon slot="end" src="assets/icon/edit.svg" class="sp-setting-card-icon" (click)="selectType(type)"></ion-icon>
+                            <ion-icon slot="end" src="assets/icon/delete.svg" class="sp-setting-card-icon" (click)="confirmDelete(type, 'type')"></ion-icon>
+                        </ion-item>
+                    </ion-list>
+                </ion-card>
+            </ion-col>
+            <ion-col class="ion-padding"></ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="sp-setting-padding">
+                <h2 class="sp-setting-title">Configurações do Hotel</h2>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="ion-padding">
+                <div class="sp-setting-header">
+                    <h2 class="sp-title">Quartos</h2>
+                    <ion-button color="success" mode="ios" shape="round" size="small" (click)="presentModalRoom()">+ Novo</ion-button>
+                </div>
+                <ion-card class="sp-setting-card">
+                    <ion-list>
+                        <ion-item *ngFor="let room of roomsCollection$ | async">
+                            <ion-label class="sp-setting-card-label">{{ room.description }}</ion-label>
+                            <ion-icon slot="end" src="assets/icon/edit.svg" class="sp-setting-card-icon" (click)="selectRoom(room)"></ion-icon>
+                            <ion-icon slot="end" src="assets/icon/delete.svg" class="sp-setting-card-icon" (click)="confirmDelete(room, 'room')"></ion-icon>
+                        </ion-item>
+                    </ion-list>
+                </ion-card>
+            </ion-col>
+            <ion-col class="ion-padding">
+                <div class="sp-setting-header">
+                    <h2 class="sp-title">Check-in/Check-out</h2>
+                    <ion-button color="success" mode="ios" shape="round" size="small" (click)="presentModalCheck()">+ Novo</ion-button>
+                </div>
+                <ion-card class="sp-setting-card">
+                    <ion-list>
+                        <ion-item *ngFor="let check of checksCollection$ | async">
+                            <ion-label class="sp-setting-card-label">
+                                {{ String(check.type) | titlecase }}
+                                <div class="itens">
+                                    <small>{{ check.hour + ' - ' }}</small>
+                                    <small>{{ (check.sunday) ? 'Dom, ' : '' }}</small>
+                                    <small>{{ (check.monday) ? 'Seg, ' : '' }}</small>
+                                    <small>{{ (check.tuesday) ? 'Ter, ' : '' }}</small>
+                                    <small>{{ (check.wednesday) ? 'Qua, ' : '' }}</small>
+                                    <small>{{ (check.thursday) ? 'Qui, ' : '' }}</small>
+                                    <small>{{ (check.friday) ? 'Sex, ' : '' }}</small>
+                                    <small>{{ (check.saturday) ? 'Sáb, ' : '' }}</small>
+                                </div>
+                            </ion-label>
+                            <ion-icon slot="end" src="assets/icon/edit.svg" class="sp-setting-card-icon" (click)="selectCheck(check)"></ion-icon>
+                            <ion-icon slot="end" src="assets/icon/delete.svg" class="sp-setting-card-icon" (click)="confirmDelete(check, 'check')"></ion-icon>
+                        </ion-item>
+                    </ion-list>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="ion-padding">
+                <div class="sp-setting-header">
+                    <h2 class="sp-title">Valores Alta Temporada</h2>
+                    <ion-button color="success" mode="ios" shape="round" size="small" (click)="presentModalPriceVariation()">+ Novo</ion-button>
+                </div>
+                <ion-card class="sp-setting-card">
+                    <ion-list>
+                        <ion-item *ngFor="let priceVariation of priceVariationsCollection$ | async">
+                            <ion-label class="sp-setting-card-label">
+                                {{ priceVariation.description }} - {{ (priceVariation.value | currency: 'BRL':'symbol') || (priceVariation.percent + '%') }}
+                                <div class="itens">
+                                    <small>{{ priceVariation.start | date: 'dd/MM/yyyy' }} á {{ priceVariation.end | date: 'dd/MM/yyyy' }}</small>
+                                </div>
+                            </ion-label>
+                            <ion-icon slot="end" src="assets/icon/edit.svg" class="sp-setting-card-icon" (click)="selectPriceVariation(priceVariation)"></ion-icon>
+                            <ion-icon slot="end" src="assets/icon/delete.svg" class="sp-setting-card-icon" (click)="confirmDelete(priceVariation, 'priceVariation')"></ion-icon>
+                        </ion-item>
+                    </ion-list>
+                </ion-card>
+            </ion-col>
+            <ion-col class="ion-padding"></ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="sp-setting-padding">
+                <h2 class="sp-setting-title">Configurações de Transporte</h2>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="ion-padding">
+                <div class="sp-setting-header">
+                    <h2 class="sp-title">Bairros</h2>
+                    <ion-button color="success" mode="ios" shape="round" size="small" (click)="presentModalDistrict()">+ Novo</ion-button>
+                </div>
+                <ion-card class="sp-setting-card">
+                    <ion-list>
+                        <ion-item *ngFor="let district of districtsCollection$ | async">
+                            <ion-label class="sp-setting-card-label">{{ district.description }}</ion-label>
+                            <ion-icon slot="end" src="assets/icon/edit.svg" class="sp-setting-card-icon" (click)="selectDistrict(district)"></ion-icon>
+                            <ion-icon slot="end" src="assets/icon/delete.svg" class="sp-setting-card-icon" (click)="confirmDelete(district, 'district')"></ion-icon>
+                        </ion-item>
+                    </ion-list>
+                </ion-card>
+            </ion-col>
+            <ion-col class="ion-padding">
+                <div class="sp-setting-header">
+                    <h2 class="sp-title">Regiões</h2>
+                    <ion-button color="success" mode="ios" shape="round" size="small" (click)="presentModalRegion()">+ Novo</ion-button>
+                </div>
+                <ion-card class="sp-setting-card">
+                    <ion-list>
+                        <ion-item *ngFor="let region of regionsCollection$ | async">
+                            <ion-label class="sp-setting-card-label">
+                                {{ region.description }}
+                                <div class="itens">
+                                    <small *ngFor="let district of region.districts; let last = last;">
+                                        {{ (!last) ? district.description + ',' : district.description + '.' }}
+                                    </small>
+                                </div>
+                            </ion-label>
+                            <ion-icon slot="end" src="assets/icon/edit.svg" class="sp-setting-card-icon" (click)="selectRegion(region)"></ion-icon>
+                            <ion-icon slot="end" src="assets/icon/delete.svg" class="sp-setting-card-icon" (click)="confirmDelete(region, 'region')"></ion-icon>
+                        </ion-item>
+                    </ion-list>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

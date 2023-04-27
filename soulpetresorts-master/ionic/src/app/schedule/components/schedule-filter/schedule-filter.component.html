@@ -1,0 +1,42 @@
+<ion-header class="sp-schedule-filter-content" mode="ios">
+    <ion-grid>
+        <ion-row>
+            <ion-col size="6">
+                <div class="sp-schedule-filter-navigate">
+                    <span>
+                        <ion-button color="light" mode="ios" class="button-arrow" (click)="backDate.emit()">
+                            <ion-icon name="ios-arrow-back"></ion-icon>
+                        </ion-button>
+                    </span>
+                    <span class="current-date">{{ currentDate | date: 'MMMM yyyy' | titlecase }}</span>
+                    <span>
+                        <ion-button color="light" mode="ios" class="button-arrow" (click)="forwardDate.emit()">
+                            <ion-icon name="ios-arrow-forward"></ion-icon>
+                        </ion-button>
+                    </span>
+                </div>
+            </ion-col>
+            <ion-col size="3">
+                <ion-button color="primary" shape="round" mode="ios" expand="block" class="button" (click)="clickView.emit()">
+                    Ver Lista
+                </ion-button>
+            </ion-col>
+            <ion-col size="3">
+                <ion-item>
+                    <ion-label>Filtrar por</ion-label>
+                    <ion-select interface="popover" placeholder="Selecione">
+                        <ion-select-option value="1">Aplicação</ion-select-option>
+                        <ion-select-option value="2">Banho Agendado</ion-select-option>
+                        <ion-select-option value="3">Creche Avulso</ion-select-option>
+                        <ion-select-option value="4">Creche Pacote</ion-select-option>
+                        <ion-select-option value="5">Hospedagem Resort</ion-select-option>
+                        <ion-select-option value="6">Outros Serviços do Banho</ion-select-option>
+                        <ion-select-option value="7">Pet Sitter</ion-select-option>
+                        <ion-select-option value="8">Saída</ion-select-option>
+                        <ion-select-option value="9">Táxi</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>

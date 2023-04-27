@@ -1,0 +1,140 @@
+<app-header [title]="'Caixa'"></app-header>
+<app-cashier-tabs [selected]="tab" (tab)="onTab($event)"></app-cashier-tabs>
+
+<ion-content class="sp-cashier-content">
+    <div class="sp-cashier-receive" *ngIf="tab === 'receive'">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="2">
+                    <ion-button color="success" expand="block" shape="round" mode="ios">Abrir Caixa</ion-button>
+                </ion-col>
+                <ion-col size="2">
+                    <ion-button color="primary" expand="block" shape="round" mode="ios">Fechar Caixa</ion-button>
+                </ion-col>
+                <ion-col size="2">
+                    <ion-button color="danger" expand="block" shape="round" mode="ios">Sangria</ion-button>
+                </ion-col>
+                <ion-col size="2">
+                    <ion-button color="success" expand="block" shape="round" mode="ios" (click)="onClickReceive()">Receber</ion-button>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="3">
+                    <app-cashier-card [subtitle]="'A receber hoje'" [title]="'R$ 1.928,00'" [colorTitle]="'secondary'"></app-cashier-card>
+                </ion-col>
+                <ion-col size="3">
+                    <app-cashier-card [subtitle]="'Pendente a receber'" [title]="'R$ 1.928,00'" [colorTitle]="'primary'"></app-cashier-card>
+                </ion-col>
+                <ion-col size="3">
+                    <app-cashier-card [subtitle]="'Recebidos'" [title]="'R$ 4.450,30'" [colorTitle]="'success'"></app-cashier-card>
+                </ion-col>
+            </ion-row>
+            <div class="sp-cashier-space"></div>
+            <ion-row>
+                <ion-col>
+                    <ngx-datatable [rows]="rows"
+                                   [ngClass]="'material'"
+                                   [rowHeight]="'auto'"
+                                   [headerHeight]="50"
+                                   [columnMode]="'force'"
+                                   [messages]="{emptyMessage:'Nenhum resultado encontrado.'}">
+                        <ngx-datatable-column name="Nome">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                {{ row.name }}
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Cliente">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                {{ row.client }}
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Telefone">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                {{ row.phone }}
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Valor">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                {{ row.value }}
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column sortable="false">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <ion-icon src="assets/icon/alert.svg" (click)="onClick(row)" class="icon"></ion-icon>
+                            </ng-template>
+                        </ngx-datatable-column>
+                    </ngx-datatable>
+                </ion-col>
+            </ion-row>
+            <div class="sp-cashier-space"></div>
+            <ion-row>
+                <ion-col class="sp-cashier-total">
+                    <span class="sp-cashier-total-description">Total: </span>
+                    <span class="sp-cashier-total-result">R$ 483,70</span>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+    <div class="sp-cashier-received" *ngIf="tab === 'received'">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="3">
+                    <app-cashier-card [subtitle]="'A receber hoje'" [title]="'R$ 1.928,00'" [colorTitle]="'secondary'"></app-cashier-card>
+                </ion-col>
+                <ion-col size="3">
+                    <app-cashier-card [subtitle]="'Pendente a receber'" [title]="'R$ 1.928,00'" [colorTitle]="'primary'"></app-cashier-card>
+                </ion-col>
+                <ion-col size="3">
+                    <app-cashier-card [subtitle]="'Recebidos'" [title]="'R$ 4.450,30'" [colorTitle]="'success'"></app-cashier-card>
+                </ion-col>
+            </ion-row>
+            <div class="sp-cashier-space"></div>
+            <ion-row>
+                <ion-col>
+                    <ngx-datatable [rows]="rows"
+                                   [ngClass]="'material'"
+                                   [rowHeight]="'auto'"
+                                   [headerHeight]="50"
+                                   [columnMode]="'force'"
+                                   [messages]="{emptyMessage:'Nenhum resultado encontrado.'}">
+                        <ngx-datatable-column name="Nome">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                {{ row.name }}
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Cliente">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                {{ row.client }}
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Telefone">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                {{ row.phone }}
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Valor">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                {{ row.value }}
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column sortable="false">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <ion-icon src="assets/icon/check.svg" (click)="onClick(row)" class="icon"></ion-icon>
+                            </ng-template>
+                        </ngx-datatable-column>
+                    </ngx-datatable>
+                </ion-col>
+            </ion-row>
+            <div class="sp-cashier-space"></div>
+            <ion-row>
+                <ion-col class="sp-cashier-total">
+                    <span class="sp-cashier-total-description">Total: </span>
+                    <span class="sp-cashier-total-result">R$ 483,70</span>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+    <div class="sp-cashier-report" *ngIf="tab === 'report'">
+
+    </div>
+</ion-content>

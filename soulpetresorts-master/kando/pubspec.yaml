@@ -1,0 +1,91 @@
+name: kando
+description: A new Flutter project.
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^0.1.2
+  flutter_launcher_icons: ^0.7.4
+  file_picker: ^1.4.3+1
+  camera_camera: ^1.0.26
+  html_color: ^1.0.0
+  flutter_html: ^0.11.0
+  flutter_masked_text: ^0.8.0
+  custom_scrollable_screen: ^1.0.0
+  shared_preferences: ^0.5.4+3
+  flutter_spinkit: ^4.0.0
+  font_awesome_flutter: ^8.5.0
+  dashed_container: ^1.0.1
+  dotted_border: ^1.0.3
+  dio: ^2.2.2 # ^3.0.4
+  rxdart: ^0.22.4
+  bloc_pattern: ^2.4.2+1
+  flutter_svg: ^0.14.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+ # To add assets to your application, add an assets section, like this:
+  assets:
+   - assets/images/pet-bg.jpg
+   - assets/images/cinto.png
+   - assets/images/bifinho.png
+   - assets/images/guia.png
+   - assets/images/guia2.png
+   - assets/images/guia3.png
+   - assets/images/medicalObs.png
+   - assets/images/pet.png
+   - assets/images/petAvatar.png
+   - assets/images/petAvatar2.png
+   - assets/images/petAvatar3.png
+   - assets/images/petAvatar4.png
+   - assets/images/petisco.png
+   - assets/images/user.png
+   - assets/images/svg/alert.svg
+   - assets/images/svg/close.svg
+   - assets/images/svg/loupe.svg
+   - assets/images/svg/success.svg
+   - assets/images/svg/loupe-add.svg
+   - assets/images/svg/Mask.svg
+   - assets/images/svg/file.svg
+   - assets/images/svg/medic.svg
+   - assets/images/svg/saloon.svg
+   - assets/images/svg/dog.svg
+   - assets/images/svg/daycare.svg
+   - assets/images/svg/pet-food.svg
+   - assets/images/svg/calendar-alt.svg
+   - assets/images/svg/icon-basket.svg
+   - assets/images/svg/Shape.svg
+   - assets/images/svg/White.svg
+   - assets/images/svg/prices.svg
+   - assets/images/logo.png
+   - assets/images/card-american.png
+   - assets/images/card-hipercard.png
+   - assets/images/card-mastercard.png
+   - assets/images/card-visa.png
+   - assets/images/icon-cvv.png
+   - assets/images/icons/
+
+flutter_icons:   
+  android: true
+  image_path: 'assets/images/icons/kspet.png'

@@ -1,0 +1,83 @@
+<app-header [title]="'Tutores'"></app-header>
+
+<ion-content class="sp-tutor-content">
+    <ion-grid>
+        <ion-row>
+            <ion-col size="7">
+                <ion-button color="success" shape="round" mode="ios" (click)="presentModal()">Cadastrar Tutor</ion-button>
+            </ion-col>
+            <ion-col size="5">
+                <ion-searchbar placeholder="Pesquisar pelo nome do tutor"
+                               class="sp-search"
+                               (ngModelChange)="onChangeSearch($event)"
+                               spellcheck
+                               showCancelButton="focus"
+                               debounce="500"
+                               animated
+                               [(ngModel)]="searchField"></ion-searchbar>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ngx-datatable [rows]="tutorsCollection$ | async"
+                               [ngClass]="'material'"
+                               [rowHeight]="'auto'"
+                               [headerHeight]="50"
+                               [columnMode]="'force'"
+                               [messages]="{emptyMessage:'Nenhum resultado encontrado.'}"
+                               [loadingIndicator]="isLoading$ | async">
+                    <ngx-datatable-column name="Foto">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            <ion-avatar (click)="selectTutor(row)">
+                                <img src="{{ row?.avatar }}">
+                            </ion-avatar>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Nome">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            <span (click)="selectTutor(row)">{{ row?.name }}</span>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="CPF">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            <span (click)="selectTutor(row)">{{ row?.cpf }}</span>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Celular">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            <span (click)="selectTutor(row)">{{ row?.phone || row?.cell_phone }}</span>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Tel. Residencial">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            <span (click)="selectTutor(row)">{{ row?.phone_residential }}</span>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Endereço">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            <span (click)="selectTutor(row)" *ngIf="row.address.street">
+                                {{ row?.address?.street }}, {{ row?.address?.number }} - {{ row?.address?.district }}
+                            </span>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Opções" sortable="false">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            <ion-button color="light" mode="ios" (click)="openViewTutor(row)">
+                                <ion-icon src="assets/icon/eye.svg"></ion-icon>
+                            </ion-button>
+                            <ion-button color="light" mode="ios" (click)="selectTutor(row)">
+                                <ion-icon src="assets/icon/edit.svg"></ion-icon>
+                            </ion-button>
+                            <ion-button color="light" mode="ios" (click)="confirmTutor(row)">
+                                <ion-icon src="assets/icon/delete.svg"></ion-icon>
+                            </ion-button>
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

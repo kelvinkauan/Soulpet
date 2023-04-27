@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="7b577020-7f66-4647-9009-f02c7b9c8735" name="soulpet" url="http://31.22.7.47">
+        <fileTransfer host="31.22.7.47" port="21" rootFolder="/soulpet.sevenclicks.us/">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

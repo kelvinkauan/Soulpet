@@ -1,0 +1,167 @@
+<app-header [title]="'Lista de Presença'" [showButtonBack]="true"></app-header>
+
+<ion-content class="sp-daycare-check-content">
+    <ion-grid>
+        <ion-row>
+            <ion-col size="2">
+                <ion-item class="border">
+                    <ion-label class="sp-label" position="floating">Cachorros</ion-label>
+                    <ion-select placeholder="Selecione"
+                                okText="OK"
+                                cancelText="Cancelar">
+                        <ion-select-option [value]="1">Cachorro 1</ion-select-option>
+                        <ion-select-option [value]="2">Cachorro 2</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-col>
+            <ion-col size="3">
+                <ion-item class="border">
+                    <ion-label class="sp-label" position="floating">Inserir cachorro no dia</ion-label>
+                    <ion-select placeholder="Selecione"
+                                okText="OK"
+                                cancelText="Cancelar">
+                                <ion-select-option [value]="1">Cachorro 1</ion-select-option>
+                                <ion-select-option [value]="2">Cachorro 2</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-col>
+            <ion-col size="3">
+                <ion-row>
+                    <ion-item lines="none" class="no-border">
+                        <ion-label>Daycare</ion-label>
+                        <ion-radio slot="start"></ion-radio>
+                      </ion-item>
+                  
+                      <ion-item lines="none" class="no-border">
+                        <ion-label>Hotel Check-in</ion-label>
+                        <ion-radio slot="start"></ion-radio>
+                      </ion-item>
+                </ion-row>
+            </ion-col>
+            <ion-col size="4">
+                <ion-item class="border">
+                    <ion-label class="sp-label" position="floating">Lista de presenças anteriores</ion-label>
+                    <ion-select placeholder="Selecione"
+                                okText="OK"
+                                cancelText="Cancelar">
+                        <ion-select-option [value]="1">Lista 1</ion-select-option>
+                        <ion-select-option [value]="2">Lista 2</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col size="2">
+                <ion-item lines="none" class="no-border">
+                    <ion-checkbox color="success" mode="ios"></ion-checkbox>
+                    <ion-label class="sp-label margin-left">Selecionar todos</ion-label>
+                </ion-item>
+            </ion-col>
+            <ion-col size="10" style="margin-top: 10px;">
+               <ion-row>
+                   <!-- <ion-col size="1" *ngFor="let button of buttons | async">
+                    <ion-button  fill="outline" color="medium" mode="ios" [color]="(selectedButton === button.id) ? 'primary' : 'medium'" (click)="selectButton(button.id)">Presença</ion-button>
+                   </ion-col> -->
+                <ion-button  fill="outline" color="medium" mode="ios">Presença</ion-button>
+                <ion-button  fill="outline" color="medium" mode="ios">Xixi</ion-button>
+                <ion-button  fill="outline" color="medium" mode="ios">Cocô</ion-button>
+                <ion-button  fill="outline" color="medium" mode="ios">Refeição 1</ion-button>
+                <ion-button  fill="outline" color="medium" mode="ios">Refeição 2</ion-button>
+                <ion-button fill="outline" color="medium" mode="ios">Saída</ion-button>
+               </ion-row>
+            </ion-col>
+        </ion-row>
+
+        <ion-row  class="table">
+            <ion-col>
+                <ngx-datatable [rows]="rows"
+                               [ngClass]="'material'"
+                               [rowHeight]="'auto'"
+                               [headerHeight]="50"
+                               [columnMode]="'force'"
+                               [messages]="{emptyMessage:'Nenhum resultado encontrado.'}">
+                               <ngx-datatable-column name="Nome">
+                                <ng-template let-row="row" ngx-datatable-cell-template>
+                                    <ion-item lines="none" class="no-border">
+                                        <ion-checkbox color="success" mode="ios"></ion-checkbox>
+                                        <ion-label class="sp-label margin-left">{{ row.nome }}</ion-label>
+                                    </ion-item>
+                                    
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column name="Presença">
+                                <ng-template let-row="row" ngx-datatable-cell-template>
+                                    <div class="presenca">
+                                        {{ row.presenca }}
+                                    </div>
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column name="Xixi">
+                                <ng-template let-row="row" ngx-datatable-cell-template>
+                                    <ion-checkbox mode="ios" color="success"></ion-checkbox>
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column name="Cocô">
+                                <ng-template let-row="row" ngx-datatable-cell-template>
+                                    <ion-checkbox mode="ios" color="success"></ion-checkbox>
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column name="Refeição 1">
+                                <ng-template let-row="row" ngx-datatable-cell-template>
+                                    <ion-item class="border">
+                                        <ion-label class="sp-label" position="floating"></ion-label>
+                                        <ion-select placeholder="Selecione"
+                                                    okText="OK"
+                                                    cancelText="Cancelar">
+                                            <ion-select-option [value]="1">Recusou</ion-select-option>
+                                            <ion-select-option [value]="2">Comeu tudo</ion-select-option>
+                                        </ion-select>
+                                    </ion-item>
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column name="Refeição 2">
+                                <ng-template let-row="row" ngx-datatable-cell-template>
+                                    <ion-item class="border">
+                                        <ion-label class="sp-label" position="floating"></ion-label>
+                                        <ion-select placeholder="Selecione"
+                                                    okText="OK"
+                                                    cancelText="Cancelar">
+                                            <ion-select-option [value]="1">Recusou</ion-select-option>
+                                            <ion-select-option [value]="2">Comeu tudo</ion-select-option>
+                                        </ion-select>
+                                    </ion-item>
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column name="Outros Serviços">
+                                <ng-template let-row="row" ngx-datatable-cell-template>
+                                    <ion-item class="border">
+                                        <ion-label class="sp-label" position="floating"></ion-label>
+                                        <ion-select placeholder="Selecione"
+                                                    okText="OK"
+                                                    cancelText="Cancelar">
+                                            <ion-select-option [value]="1">Anti pulgas</ion-select-option>
+                                            <ion-select-option [value]="2">Corte de unhas</ion-select-option>
+                                        </ion-select>
+                                    </ion-item>
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column name="Observações">
+                                <ng-template let-row="row" ngx-datatable-cell-template>
+                                    <ion-item class="border">
+                                        <ion-input type="text" value=""></ion-input>
+                                    </ion-item>
+                                </ng-template>
+                            </ngx-datatable-column>
+                    <ngx-datatable-column name="Opções" sortable="false">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            <ion-button color="light" mode="ios">
+                                <ion-icon src="assets/icon/delete.svg"></ion-icon>
+                            </ion-button>
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

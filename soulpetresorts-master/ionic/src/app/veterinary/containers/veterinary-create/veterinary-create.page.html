@@ -1,0 +1,352 @@
+<app-header [title]="'Veterinário'" [showButtonBack]="true"></app-header>
+
+<ion-content class="sp-veterinary-create-content">
+    <ion-grid>
+        <ion-row>
+            <ion-col size="2">
+                <ion-text color="secondary">
+                    <ion-img src="assets/images/dog.png" class="image"></ion-img>
+                </ion-text>
+            </ion-col>
+            <ion-col size="10">
+                <ion-grid>
+                    <ion-row>
+                        <ion-text color="primary">
+                            <h2>Informações básicas</h2>
+                        </ion-text>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="6">
+                            <ion-row class="line-info">
+                                <ion-text class="desc">
+                                    Nome:
+                                </ion-text>
+                                <ion-text class="info">
+                                    Fred
+                                </ion-text>
+                            </ion-row>
+                            <ion-row class="line-info">
+                                <ion-text class="desc">
+                                    Tipo:
+                                </ion-text>
+                                <ion-text class="info">
+                                    Cachorro
+                                </ion-text>
+                            </ion-row>
+                            <ion-row class="line-info">
+                                <ion-text class="desc">
+                                    Raça:
+                                </ion-text>
+                                <ion-text class="info">
+                                    Beagle
+                                </ion-text>
+                            </ion-row>
+                            <ion-row class="line-info">
+                                <ion-text class="desc">
+                                    Idade:
+                                </ion-text>
+                                <ion-text class="info">
+                                    2 anos
+                                </ion-text>
+                            </ion-row>
+                            <ion-row class="line-info">
+                                <ion-text class="desc">
+                                    Alergias:
+                                </ion-text>
+                                <ion-text class="info">
+                                    nenhuma
+                                </ion-text>
+                            </ion-row>
+                        </ion-col>
+                        <ion-col size="6">
+                            <ion-row class="line-info">
+                                <ion-text class="desc">
+                                    Sexo:
+                                </ion-text>
+                                <ion-text class="info">
+                                    Masculino
+                                </ion-text>
+                            </ion-row>
+                            <ion-row class="line-info">
+                                <ion-text class="desc">
+                                    Porte:
+                                </ion-text>
+                                <ion-text class="info">
+                                    Médio
+                                </ion-text>
+                            </ion-row>
+                            <ion-row class="line-info">
+                                <ion-text class="desc">
+                                    Tipo de Pelo:
+                                </ion-text>
+                                <ion-text class="info">
+                                    Curto
+                                </ion-text>
+                            </ion-row>
+                            <ion-row class="line-info">
+                                <ion-text class="desc">
+                                    Peso:
+                                </ion-text>
+                                <ion-text class="info">
+                                    5kg
+                                </ion-text>
+                            </ion-row>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="6">
+                            <ion-item class="border">
+                                <ion-label class="sp-label" position="floating"
+                                >Peso atual <span class="required"></span
+                                ></ion-label>
+                                <ion-input
+                                        type="text"
+                                        formControlName="currentWeight"
+                                ></ion-input>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col size="6">
+                            <ion-item class="border">
+                                <ion-label class="sp-label" position="floating"
+                                >Temperatura <span class="required"></span
+                                ></ion-label>
+                                <ion-input
+                                        type="text"
+                                        formControlName="temperature"
+                                ></ion-input>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-text color="primary" class="title">
+                            Tutor(a)
+                        </ion-text>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="1">
+                            <ion-text color="primary">
+                                <ion-img
+                                        src="assets/images/avatar.jpg"
+                                        class="avatar"
+                                ></ion-img>
+                            </ion-text>
+                        </ion-col>
+                        <ion-col size="9">
+                            <ion-row>
+                                <ion-text class="desc">
+                                    Amanda Ramos
+                                </ion-text>
+                            </ion-row>
+                            <ion-row>
+                                <ion-text class="infoTutor">
+                                    Telefone: (45) 9 9930-3232
+                                </ion-text>
+                            </ion-row>
+                            <ion-row>
+                                <ion-text class="infoTutor">
+                                    Endereço: Rodrigues Alvez 1634 - Foz do Iguaçu - PR
+                                </ion-text>
+                            </ion-row>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-text color="primary" class="title">
+                            Anamnese
+                        </ion-text>
+                    </ion-row>
+                    <ion-item class="border">
+                        <ion-label position="floating"></ion-label>
+                        <ion-textarea rows="3"></ion-textarea>
+                    </ion-item>
+                    <ion-row>
+                        <ion-text color="primary" class="title">
+                            Diagnóstico
+                        </ion-text>
+                    </ion-row>
+                    <ion-item class="border">
+                        <ion-label position="floating"
+                        >Diagnóstico atual com receituário
+                        </ion-label
+                        >
+                        <ion-textarea rows="3"></ion-textarea>
+                    </ion-item>
+                    <ion-row>
+                        <ion-text color="primary" class="title">
+                            Exames
+                        </ion-text>
+                    </ion-row>
+                    <ion-item class="border">
+                        <ion-label position="floating"
+                        >Digite aqui os exames que deseja solicitar
+                        </ion-label
+                        >
+                        <ion-textarea rows="3"></ion-textarea>
+                    </ion-item>
+                    <ion-row>
+                        <ion-text color="primary" class="title">
+                            Histórico
+                        </ion-text>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col size="1">
+                            <div class="circle">
+                                <ion-icon src="assets/icon/icon-medic-kit.svg"></ion-icon>
+                            </div>
+                        </ion-col>
+                        <ion-col size="6">
+                            <ion-item class="border">
+                                <ion-label class="sp-label" position="floating"
+                                >Consultas
+                                </ion-label
+                                >
+                                <ion-select
+                                        placeholder="Selecione"
+                                        okText="OK"
+                                        cancelText="Cancelar"
+                                >
+                                    <ion-select-option [value]="1"
+                                    >Consulta do dia 23/05/2019
+                                    </ion-select-option
+                                    >
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col size="5" class="link">
+                            <a href="" color="primary">Ver Histórico</a>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-text color="primary" class="title">
+                            Tratamento
+                        </ion-text>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-text class="desc">
+                            Remédio-1:
+                        </ion-text>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="12">
+                            <ion-item class="border">
+                                <ion-label class="sp-label" position="floating"
+                                >Nome do remédio <span class="required"></span
+                                ></ion-label>
+                                <ion-input
+                                        type="text"
+                                        formControlName="currentWeight"
+                                ></ion-input>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col size="6">
+                            <ion-item class="border">
+                                <ion-label class="sp-label" position="floating"
+                                >Quantos dias? <span class="required"></span
+                                ></ion-label>
+                                <ion-input
+                                        type="text"
+                                        formControlName="currentWeight"
+                                ></ion-input>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col size="6">
+                            <ion-item class="border">
+                                <ion-label class="sp-label" position="floating"
+                                >Consultas
+                                </ion-label
+                                >
+                                <ion-select
+                                        placeholder="Selecione"
+                                        okText="OK"
+                                        cancelText="Cancelar"
+                                >
+                                    <ion-select-option [value]="1"
+                                    >Consulta do dia 23/05/2019
+                                    </ion-select-option
+                                    >
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col size="4">
+                            <ion-text class="label">
+                                Quantas vezes por dia?
+                            </ion-text>
+                        </ion-col>
+                        <ion-col size="2"></ion-col>
+                        <ion-col size="3">
+                            <ion-text class="label">
+                                Quantidade?
+                            </ion-text>
+                        </ion-col>
+                        <ion-col size="3"></ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col size="4">
+                            <ion-item class="border">
+                                <ion-input
+                                        type="text"
+                                        formControlName="currentWeight"
+                                ></ion-input>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col size="2" style="margin-top: 25px;">
+                            <ion-text class="label">
+                                X
+                            </ion-text>
+                        </ion-col>
+                        <ion-col size="3">
+                            <ion-item class="border">
+                                <ion-input
+                                        type="text"
+                                        formControlName="currentWeight"
+                                ></ion-input>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col size="3">
+                            <ion-item class="border">
+                                <ion-select
+                                        placeholder="Selecione"
+                                        okText="OK"
+                                        cancelText="Cancelar"
+                                >
+                                    <ion-select-option [value]="1">ml</ion-select-option>
+                                    <ion-select-option [value]="1">comprimido</ion-select-option>
+                                    <ion-select-option [value]="1">gotas</ion-select-option>
+                                    <ion-select-option [value]="1">gramas</ion-select-option>
+                                    <ion-select-option [value]="1">unidade</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row style="margin-bottom: 10px;">
+                        <ion-text class="label">
+                            Diagnóstico
+                        </ion-text>
+                    </ion-row>
+                    <ion-item class="border">
+                        <ion-textarea rows="3"></ion-textarea>
+                    </ion-item>
+
+                    <ion-row id="add-medicine">
+                        <ion-text>
+                            <a href="" color="primary">+Adicionar Remédio</a>
+                        </ion-text>
+                    </ion-row>
+
+                    <app-footer-button [labelConfirm]="'Salvar'"></app-footer-button>
+                </ion-grid>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

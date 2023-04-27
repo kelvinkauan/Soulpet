@@ -1,0 +1,65 @@
+<app-header-modal [title]="'Agendar ' + service.description + ' para o ' + form?.name"></app-header-modal>
+
+<ion-content class="sp-service-content">
+    <ion-grid class="sp-form" [formGroup]="formGroup">
+        <ion-row>
+            <ion-col>
+                <ion-item>
+                    <ion-label class="sp-label" position="floating">Data <span class="required">*</span></ion-label>
+                    <ion-datetime formControlName="date"
+                                  displayFormat="DD/MM/YYYY"
+                                  doneText="OK"
+                                  cancelText="Cancelar"></ion-datetime>
+                </ion-item>
+                <ng-container *ngFor="let validation of validationMessages.date">
+                    <app-validation-message [form]="formGroup" [control]="'date'" [validation]="validation"></app-validation-message>
+                </ng-container>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-item>
+                    <ion-label class="sp-label" position="floating">Horário de Início</ion-label>
+                    <ion-datetime formControlName="hour"
+                                  displayFormat="HH:mm"
+                                  doneText="OK"
+                                  cancelText="Cancelar"></ion-datetime>
+                </ion-item>
+                <ng-container *ngFor="let validation of validationMessages.hour">
+                    <app-validation-message [form]="formGroup" [control]="'hour'" [validation]="validation"></app-validation-message>
+                </ng-container>
+            </ion-col>
+            <ion-col>
+                <ion-item>
+                    <ion-label class="sp-label" position="floating">Tempo Estimado (min)</ion-label>
+                    <ion-input type="number" formControlName="time"></ion-input>
+                </ion-item>
+                <ng-container *ngFor="let validation of validationMessages.time">
+                    <app-validation-message [form]="formGroup" [control]="'time'" [validation]="validation"></app-validation-message>
+                </ng-container>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-item>
+                    <ion-label class="sp-label" position="floating">Selecione o Responsável</ion-label>
+                    <ion-select placeholder="Selecione"
+                                okText="OK"
+                                cancelText="Cancelar"
+                                formControlName="user">
+                        <ion-select-option [value]="user"
+                                           *ngFor="let user of usersCollection$ | async">{{ user.name }}</ion-select-option>
+                    </ion-select>
+                </ion-item>
+                <ng-container *ngFor="let validation of validationMessages.user">
+                    <app-validation-message [form]="formGroup" [control]="'user'" [validation]="validation"></app-validation-message>
+                </ng-container>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
+<app-footer-modal (clickCancel)="onClickCancel()"
+                  (clickConfirm)="onClickConfirm()"
+                  [labelConfirm]="'Cadastrar'"
+                  [isLoading]="isLoading$ | async"></app-footer-modal>

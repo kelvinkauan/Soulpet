@@ -1,0 +1,22 @@
+<ion-content class="sp-login-content">
+    <div class="sp-login-background">
+        <ion-grid class="sp-grid">
+            <ion-row class="sp-row">
+                <ion-col class="sp-column">
+                    <div class="sp-form-login" [formGroup]="form" novalidate>
+                        <ion-img src="assets/logo/logo-kando.png" class="logo"></ion-img>
+                        <ion-item mode="ios">
+                            <ion-label class="label" position="floating">E-mail:</ion-label>
+                            <ion-input type="email" formControlName="email" class="input"></ion-input>
+                        </ion-item>
+                        <ion-item mode="ios">
+                            <ion-label class="label" position="floating">Senha:</ion-label>
+                            <ion-input type="password" formControlName="password" class="input"></ion-input>
+                        </ion-item>
+                        <ion-button color="tertiary" expand="block" class="sp-form-button" mode="ios" (click)="onSubmit()" [disabled]="!form.valid">Acessar</ion-button>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+</ion-content>

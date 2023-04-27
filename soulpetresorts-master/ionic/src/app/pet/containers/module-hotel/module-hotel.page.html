@@ -1,0 +1,114 @@
+<app-header [title]="'Resort'" [showButtonBack]="true"></app-header>
+
+<ion-content class="sp-pet-content">
+    <ion-grid class="sp-form" [formGroup]="formGroup">
+        <ion-row>
+            <ion-col>
+                <span *ngFor="let check of checksCollection$ | async" class="title">
+                    <ng-container *ngTemplateOutlet="(check.type === 'CHECK-IN') ? checkin : checkout; context: { check: check }"></ng-container>
+                </span>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="3">
+                <ion-item>
+                    <ion-label class="sp-label" position="floating">Check-in</ion-label>
+                    <ion-datetime formControlName="date_checkin"
+                                  (ionChange)="totalDays.calculateDaily()"
+                                  displayFormat="DD/MM/YYYY"
+                                  doneText="OK"
+                                  cancelText="Cancelar"></ion-datetime>
+                </ion-item>
+            </ion-col>
+            <ion-col size="2">
+                <ion-item>
+                    <ion-label class="sp-label" position="floating">Horário</ion-label>
+                    <ion-datetime formControlName="hour_checkin"
+                                  (ionChange)="totalDays.calculateDaily()"
+                                  displayFormat="HH:mm"
+                                  doneText="OK"
+                                  cancelText="Cancelar"></ion-datetime>
+                </ion-item>
+            </ion-col>
+            <ion-col size="3">
+                <ion-item>
+                    <ion-label class="sp-label" position="floating">Check-out</ion-label>
+                    <ion-datetime formControlName="date_checkout"
+                                  (ionChange)="totalDays.calculateDaily()"
+                                  displayFormat="DD/MM/YYYY"
+                                  doneText="OK"
+                                  cancelText="Cancelar"></ion-datetime>
+                </ion-item>
+            </ion-col>
+            <ion-col size="2">
+                <ion-item>
+                    <ion-label class="sp-label" position="floating">Horário</ion-label>
+                    <ion-datetime formControlName="hour_checkout"
+                                  (ionChange)="totalDays.calculateDaily()"
+                                  displayFormat="HH:mm"
+                                  doneText="OK"
+                                  cancelText="Cancelar"></ion-datetime>
+                </ion-item>
+            </ion-col>
+            <ion-col size="2">
+                <app-total-days-hotel [checkIn]="checkIn$ | async"
+                                      [checkOut]="checkOut$ | async"
+                                      [formGroup]="formGroup" #totalDays></app-total-days-hotel>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-button class="link">
+                + Adicionar Datas
+            </ion-button>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <h2 class="title padding">Selecione o Hóspede</h2>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="ion-flex">
+                <app-card-pet *ngIf="pet"
+                              [name]="pet?.name"
+                              [image]="pet?.avatar"
+                              [isButtons]="true"
+                              [onlyDelete]="true"
+                              (clickDelete)="confirmPet(pet)"></app-card-pet>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <h2 class="title padding">Selecione o Quarto</h2>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="2" *ngFor="let room of roomsCollection$ | async">
+                <ion-button [color]="(selectedRoom === room.id) ? 'primary' : 'success'"
+                            expand="block"
+                            mode="ios"
+                            size="large"
+                            (click)="selectRoom(room)">{{ room.number | leftpad: 2 }}</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
+<ng-template #checkin let-check="check">
+    Nosso horário de {{ String(check.type) | titlecase }} é às {{ check.hour }}h
+</ng-template>
+
+<ng-template #checkout let-check="check">
+    e de {{ String(check.type) | titlecase }} é às {{ check.hour }}h
+</ng-template>
+
+<ion-footer no-border>
+    <ion-toolbar>
+        <ion-grid>
+            <ion-row>
+                <ion-col class="ion-align-items-end">
+                    <ion-button color="success" shape="round" mode="ios" (click)="onClickConfirm()" [disabled]="!formGroup.valid">Finalizar</ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-footer>
